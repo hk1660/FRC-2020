@@ -3,9 +3,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.RobotMap;
-
-
-
+import frc.robot.utils.XboxOne;
 
 
 public class DriveTrain implements Subsystem {
@@ -63,4 +61,30 @@ public class DriveTrain implements Subsystem {
         this.turnSpeed = turnSpeed;
         Drive();
     }
+
+    public void driveJoystick(XboxOne joy) {
+        this.forwardSpeed = joy.getRightStickRaw_Y();
+        if(Math.abs(joy.getLeftStickRaw_X()) > 0.1){
+            RobotMap.NAVX_TURN_FLAG = false;
+        }
+
+
+        if(!RobotMap.NAVX_TURN_FLAG){
+            this.turnSpeed =  joy.getLeftStickRaw_X();
+        }
+        Drive();
+
+
+        //drive(joy.getRightStickRaw_X(), joy.getRightStickRaw_Y(), joy.getLeftStickRaw_X());
+    }
+    /*
+    public void initDefaultCommand() {
+        setDefaultCommand(new DriveMecWithJoystick());
+
+
+    }
+
+     */
+
+
 }

@@ -47,13 +47,13 @@ public class RobotMap {
     public final static int DRIVE_BACK_LEFT_CHANNEL = 1;
     public final static int DRIVE_FRONT_RIGHT_CHANNEL = 14;
     public final static int DRIVE_BACK_RIGHT_CHANNEL = 15;
-
+/*
     //Manip channels
-    public final static int CARGO_ROLLER_CHANNEL = 6;
+    //public final static int CARGO_ROLLER_CHANNEL = 6;
     //public final static int TONSIL_PRIME_CHANNEL = 7;
-    public final static int TONSIL_CHANNEL = 8;
-    public final static int WINCH_MOTOR_CHANNEL = 5;
-    public final static int SECOND_WINCH_MOTOR_CHANNEL = 7;
+    //public final static int TONSIL_CHANNEL = 8;
+    //public final static int WINCH_MOTOR_CHANNEL = 5;
+    //public final static int SECOND_WINCH_MOTOR_CHANNEL = 7;
     //PCM Channels
     //public final static int COMPRESSOR_PORT  = 0;
     public final static int PISTON_IN_ELEV_CHANNEL = 0;
@@ -65,7 +65,7 @@ public class RobotMap {
 
 
     public final static int LIFT_LIMIT_TOP_CHANNEL = 0;
-
+*/
     //NavX angles
     public final static double LEFT_WALL_ANGLE = -90.0;
     public final static double RIGHT_WALL_ANGLE = 90.0;
