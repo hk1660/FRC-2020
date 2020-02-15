@@ -1,7 +1,8 @@
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.RobotMap;
 
 
 
@@ -9,44 +10,57 @@ import edu.wpi.first.wpilibj2.command.Subsystem;
 
 public class DriveTrain implements Subsystem {
     private Spark leftMotors;
+    private Spark leftMotors2;
     private Spark rightMotors;
-    private DifferentialDrive difDrive;
+    private Spark rightMotors2;
+    private MecanumDrive mecDrive;
 
 
 
-    private double leftSpeed = 0.0;
-    private double rightSpeed = 0.0;
+    private double strafeSpeed = 0.0;
+    private double forwardSpeed = 0.0;
+    private double turnSpeed = 0.0;
+    private double angleParam = 0.0;
 
     public DriveTrain(){
         super();
 
         //DT initializations
-        //leftMotors = new Spark();
-        //rightMotors = newSpark();
+        leftMotors = new Spark(RobotMap.DRIVE_FRONT_LEFT_CHANNEL);
+        rightMotors = new Spark(RobotMap.DRIVE_FRONT_RIGHT_CHANNEL);
+        rightMotors2 = new Spark(RobotMap.DRIVE_BACK_RIGHT_CHANNEL);
+        leftMotors2 = new Spark(RobotMap.DRIVE_BACK_LEFT_CHANNEL);
 
-        difDrive = new DifferentialDrive(leftMotors, rightMotors);
+        mecDrive = new MecanumDrive(leftMotors, leftMotors2, rightMotors, rightMotors2);
 
     }
 
     public void Drive(){
-        difDrive.tankDrive(leftSpeed, rightSpeed);
+        mecDrive.driveCartesian(strafeSpeed, forwardSpeed, turnSpeed);
 
     }
 
-    public void Drive(double leftParameter, double rightParameter){
-        leftSpeed = leftParameter;
-        rightSpeed = rightParameter;
+    public void Drive(double strafeParameter, double forwardParameter, double turnParameter, double angleParameter){
+        strafeSpeed = strafeParameter;
+        forwardSpeed = forwardParameter;
+        turnSpeed = turnParameter;
+        this.angleParam = angleParameter;
 
         Drive();
     }
 
-    public void setLeftSpeed(double LeftSpeed){
-        this.leftSpeed = leftSpeed;
+    public void setStrafeSpeed(double strafeSpeed){
+        this.strafeSpeed = strafeSpeed;
         Drive();
     }
 
-    public void setRightSpeed(double rightSpeed){
-        this.rightSpeed = rightSpeed;
+    public void setForwardSpeed(double forwardSpeed){
+        this.forwardSpeed = forwardSpeed;
+        Drive();
+    }
+
+    public void setTurnSpeed(double turnSpeed){
+        this.turnSpeed = turnSpeed;
         Drive();
     }
 }
