@@ -19,7 +19,7 @@ class DriveForwardJoystick implements Command {
     // Called repeatedly when this Command is scheduled to run
 
     public  void execute() {
-        //Robot.m_drivetrain.setForwardSpeed(Robot.m_oi.getDriverStick().getRightStickRaw_Y());
+        Robot.driveTrain.setForwardSpeed(Robot.oi.getDriverStick().getRightStickRaw_Y());
     }
 
     // Make this return true when this Command no longer needs to run execute()

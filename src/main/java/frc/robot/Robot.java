@@ -23,6 +23,7 @@ public class Robot extends TimedRobot
 {
     private Command autonomousCommand;
     public static DriveTrain driveTrain;
+    public static OI oi;
 
     private RobotContainer robotContainer;
 
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot
         // autonomous chooser on the dashboard.
         robotContainer = new RobotContainer();
         driveTrain = new DriveTrain();
+        oi = new OI();
     }
 
     /**
