@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveForwardJoyStick;
@@ -91,7 +92,7 @@ public class DriveTrain implements Subsystem {
         //SmartDashboard.putNumber("RawEncoderD", getEncoderVal());
         //SmartDashboard.putNumber("Distance", getDistance());
         //SmartDashboard.putNumber("TurnSpeed", turnSpeed);
-        //SmartDashboard.putNumber("ForwardSpeed", forwardSpeed);
+        SmartDashboard.putNumber("ForwardSpeed", forwardSpeed);
         //SmartDashboard.putNumber("Strafepeed", strafeSpeed);
 
     }
