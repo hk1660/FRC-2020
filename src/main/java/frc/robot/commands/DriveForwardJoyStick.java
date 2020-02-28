@@ -9,9 +9,9 @@ import java.util.Set;
 /**
  * Have the robot drive mecanum style using the XBOXONE Joystick until interrupted.
  */
-class DriveForwardJoystick implements Command {
+public class DriveForwardJoyStick implements Command {
     Set<Subsystem> dfj = new HashSet<Subsystem>();
-    public DriveForwardJoystick() {
+    public DriveForwardJoyStick() {
 
         dfj.add(Robot.driveTrain);
     }

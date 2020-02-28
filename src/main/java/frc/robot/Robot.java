@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
 
 /**
@@ -24,6 +25,7 @@ public class Robot extends TimedRobot
     private Command autonomousCommand;
     public static DriveTrain driveTrain;
     public static OI oi;
+    public static SmartDashboard smartDashboard;
 
     private RobotContainer robotContainer;
 
@@ -39,6 +41,8 @@ public class Robot extends TimedRobot
         robotContainer = new RobotContainer();
         driveTrain = new DriveTrain();
         oi = new OI();
+
+        //SmartDashboard.putData(driveTrain);
     }
 
     /**

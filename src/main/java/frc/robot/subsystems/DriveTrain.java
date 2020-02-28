@@ -3,6 +3,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.DriveForwardJoyStick;
 import frc.robot.utils.XboxOne;
 
 
@@ -77,14 +78,21 @@ public class DriveTrain implements Subsystem {
 
         //drive(joy.getRightStickRaw_X(), joy.getRightStickRaw_Y(), joy.getLeftStickRaw_X());
     }
-    /*
+
     public void initDefaultCommand() {
-        setDefaultCommand(new DriveMecWithJoystick());
+        setDefaultCommand(new DriveForwardJoyStick());
 
 
     }
 
-     */
 
 
+    public void log() {
+        //SmartDashboard.putNumber("RawEncoderD", getEncoderVal());
+        //SmartDashboard.putNumber("Distance", getDistance());
+        //SmartDashboard.putNumber("TurnSpeed", turnSpeed);
+        //SmartDashboard.putNumber("ForwardSpeed", forwardSpeed);
+        //SmartDashboard.putNumber("Strafepeed", strafeSpeed);
+
+    }
 }
