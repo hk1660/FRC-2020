@@ -24,6 +24,7 @@ public class DriveTrain implements Subsystem {
 
     public DriveTrain(){
         super();
+        //System.out.println("yer");
 
         //DT initializations
         leftMotors = new Spark(RobotMap.DRIVE_FRONT_LEFT_CHANNEL);
@@ -32,6 +33,7 @@ public class DriveTrain implements Subsystem {
         leftMotors2 = new Spark(RobotMap.DRIVE_BACK_LEFT_CHANNEL);
 
         mecDrive = new MecanumDrive(leftMotors, leftMotors2, rightMotors, rightMotors2);
+        mecDrive.setSafetyEnabled(false);
 
     }
 
