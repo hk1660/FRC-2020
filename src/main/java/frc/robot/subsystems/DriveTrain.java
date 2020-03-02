@@ -32,6 +32,8 @@ public class DriveTrain implements Subsystem {
         rightMotors2 = new Spark(RobotMap.DRIVE_BACK_RIGHT_CHANNEL);
         leftMotors2 = new Spark(RobotMap.DRIVE_BACK_LEFT_CHANNEL);
 
+        SmartDashboard.putString("Drivetrain Init", "Drivetrain Init");
+
         mecDrive = new MecanumDrive(leftMotors, leftMotors2, rightMotors, rightMotors2);
         mecDrive.setSafetyEnabled(false);
 
@@ -39,6 +41,7 @@ public class DriveTrain implements Subsystem {
 
     public void Drive(){
         mecDrive.driveCartesian(strafeSpeed, forwardSpeed, turnSpeed);
+        SmartDashboard.putString("Drive", "Drive");
 
     }
 
@@ -77,12 +80,14 @@ public class DriveTrain implements Subsystem {
             this.turnSpeed =  joy.getLeftStickRaw_X();
         }
         Drive();
+        SmartDashboard.putString("Joystick", "Running");
 
 
         //drive(joy.getRightStickRaw_X(), joy.getRightStickRaw_Y(), joy.getLeftStickRaw_X());
     }
 
     public void initDefaultCommand() {
+        SmartDashboard.putString("Default", "Default");
         setDefaultCommand(new DriveForwardJoyStick());
 
 

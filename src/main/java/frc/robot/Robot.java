@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.DriveForwardJoyStick;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
@@ -30,6 +31,7 @@ public class Robot extends TimedRobot
     public static DriveTrain driveTrain;
     public static OI oi;
     public static SmartDashboard smartDashboard;
+    public DriveForwardJoyStick driveForwardJoyStick;
 
     private RobotContainer robotContainer;
 
@@ -46,6 +48,7 @@ public class Robot extends TimedRobot
         robotContainer = new RobotContainer();
         driveTrain = new DriveTrain();
         oi = new OI();
+        SmartDashboard.putString("Robot Initi", "Robot Initi");
         checkMotors();
 
 
@@ -67,6 +70,7 @@ public class Robot extends TimedRobot
         // and running subsystem periodic() methods.  This must be called from the robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
+        driveTrain.driveJoystick(OI.driverStick);
     }
 
     /**
@@ -124,6 +128,7 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic()
     {
+        driveTrain.driveJoystick(OI.driverStick);
     }
 
     @Override
@@ -140,4 +145,6 @@ public class Robot extends TimedRobot
     public void testPeriodic()
     {
     }
+
+    
 }
