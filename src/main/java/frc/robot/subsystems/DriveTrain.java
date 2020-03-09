@@ -1,4 +1,6 @@
 package frc.robot.subsystems;
+import com.revrobotics.CANSparkMaxLowLevel;
+import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -7,13 +9,15 @@ import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveForwardJoyStick;
 import frc.robot.utils.XboxOne;
+import com.revrobotics.CANSparkMax;
+
 
 
 public class DriveTrain implements Subsystem {
-    private Spark leftMotors;
-    private Spark leftMotors2;
-    private Spark rightMotors;
-    private Spark rightMotors2;
+    private CANSparkMax leftMotors;
+    private CANSparkMax leftMotors2;
+    private CANSparkMax rightMotors;
+    private CANSparkMax rightMotors2;
     private MecanumDrive mecDrive;
     private SendableChooser<Spark> spark;
 
@@ -23,16 +27,20 @@ public class DriveTrain implements Subsystem {
     public double forwardSpeed = 0.0;
     private double turnSpeed = 0.0;
     private double angleParam = 0.0;
+    private int leftBack = 15;
+    private int leftFront = 14;
+    private int rightFront = 1;
+    private int rightBack = 0;
 
     public DriveTrain(){
         super();
         //System.out.println("yer");
 
         //DT initializations
-        leftMotors = new Spark(RobotMap.DRIVE_FRONT_LEFT_CHANNEL);
-        rightMotors = new Spark(RobotMap.DRIVE_FRONT_RIGHT_CHANNEL);
-        rightMotors2 = new Spark(RobotMap.DRIVE_BACK_RIGHT_CHANNEL);
-        leftMotors2 = new Spark(RobotMap.DRIVE_BACK_LEFT_CHANNEL);
+        leftMotors = new CANSparkMax(leftFront, CANSparkMaxLowLevel.MotorType.kBrushless);
+        rightMotors = new CANSparkMax(rightFront, CANSparkMaxLowLevel.MotorType.kBrushless);
+        rightMotors2 = new CANSparkMax(rightBack, CANSparkMaxLowLevel.MotorType.kBrushless);
+        leftMotors2 = new CANSparkMax(leftBack, CANSparkMaxLowLevel.MotorType.kBrushless);
 
         SmartDashboard.putString("Drivetrain Init", "Drivetrain Init");
 
@@ -43,7 +51,8 @@ public class DriveTrain implements Subsystem {
 
     public void Drive(){
         mecDrive.driveCartesian(strafeSpeed, forwardSpeed, turnSpeed);
-        SmartDashboard.putString("Drive", "Drive");
+        SmartDashboard.putNumber("Drive", this.forwardSpeed);
+        SmartDashboard.putNumber("Left MotorCAN", leftMotors.get());
 
     }
 
@@ -83,6 +92,8 @@ public class DriveTrain implements Subsystem {
         }
         Drive();
         SmartDashboard.putString("Joystick", "Running");
+        SmartDashboard.putNumber("Right Stick Y", joy.getRightStickRaw_Y());
+        SmartDashboard.putNumber("Forward Speed Y", this.forwardSpeed);
 
 
         //drive(joy.getRightStickRaw_X(), joy.getRightStickRaw_Y(), joy.getLeftStickRaw_X());
@@ -101,13 +112,13 @@ public class DriveTrain implements Subsystem {
         //SmartDashboard.putNumber("RawEncoderD", getEncoderVal());
         //SmartDashboard.putNumber("Distance", getDistance());
         //SmartDashboard.putNumber("TurnSpeed", turnSpeed);
-        SmartDashboard.putNumber("ForwardSpeed", forwardSpeed);
+        SmartDashboard.putNumber("ForwardSpeedX", this.forwardSpeed);
         //SmartDashboard.putNumber("Strafepeed", strafeSpeed);
-        spark = new SendableChooser<Spark>();
-        spark.addOption("leftMotors",leftMotors);
-        spark.addOption("leftMotors2",leftMotors2);
-        spark.addOption("rightMotors",rightMotors);
-        spark.addOption("rightMotors2",rightMotors2);
+//        spark = new SendableChooser<Spark>();
+//        spark.addOption("leftMotors",leftMotors);
+//        spark.addOption("leftMotors2",leftMotors2);
+//        spark.addOption("rightMotors",rightMotors);
+//        spark.addOption("rightMotors2",rightMotors2);
         SmartDashboard.putData(spark);
 
     }

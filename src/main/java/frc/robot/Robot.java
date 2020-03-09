@@ -16,6 +16,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.utils.JoystickAnalogButton;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
+
 import static edu.wpi.first.wpilibj.MotorSafety.*;
 //import edu.wpi.first.wpilibj.smartdashboard.
 
@@ -43,7 +44,6 @@ public class Robot extends TimedRobot
     @Override
     public void robotInit()
     {
-        System.out.println("Test RobotInit");
         // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
         // autonomous chooser on the dashboard.
         robotContainer = new RobotContainer();
