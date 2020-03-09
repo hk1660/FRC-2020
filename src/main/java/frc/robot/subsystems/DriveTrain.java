@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.RobotMap;
@@ -14,11 +15,12 @@ public class DriveTrain implements Subsystem {
     private Spark rightMotors;
     private Spark rightMotors2;
     private MecanumDrive mecDrive;
+    private SendableChooser<Spark> spark;
 
 
 
     private double strafeSpeed = 0.0;
-    private double forwardSpeed = 0.0;
+    public double forwardSpeed = 0.0;
     private double turnSpeed = 0.0;
     private double angleParam = 0.0;
 
@@ -101,6 +103,12 @@ public class DriveTrain implements Subsystem {
         //SmartDashboard.putNumber("TurnSpeed", turnSpeed);
         SmartDashboard.putNumber("ForwardSpeed", forwardSpeed);
         //SmartDashboard.putNumber("Strafepeed", strafeSpeed);
+        spark = new SendableChooser<Spark>();
+        spark.addOption("leftMotors",leftMotors);
+        spark.addOption("leftMotors2",leftMotors2);
+        spark.addOption("rightMotors",rightMotors);
+        spark.addOption("rightMotors2",rightMotors2);
+        SmartDashboard.putData(spark);
 
     }
 }

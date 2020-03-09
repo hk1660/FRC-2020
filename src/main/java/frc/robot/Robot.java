@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveForwardJoyStick;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.utils.JoystickAnalogButton;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
 import static edu.wpi.first.wpilibj.MotorSafety.*;
@@ -49,7 +50,12 @@ public class Robot extends TimedRobot
         driveTrain = new DriveTrain();
         oi = new OI();
         SmartDashboard.putString("Robot Initi", "Robot Initi");
+        //SmartDashboard.putNumber("ForwardSpeed", forwardSpeed);
         checkMotors();
+        log();
+        SmartDashboard.putString("Checkpoint","Checkpoint");
+
+
 
 
         //SmartDashboard.putData(driveTrain);
@@ -144,6 +150,11 @@ public class Robot extends TimedRobot
     @Override
     public void testPeriodic()
     {
+    }
+
+    public void log(){
+        driveTrain.log();
+
     }
 
     
