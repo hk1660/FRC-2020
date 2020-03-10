@@ -29,8 +29,8 @@ public class DriveTrain implements Subsystem {
     private double angleParam = 0.0;
     private int leftBack = 15;
     private int leftFront = 14;
-    private int rightFront = 1;
-    private int rightBack = 0;
+    private int rightFront = 2;
+    private int rightBack = 1;
 
     public DriveTrain(){
         super();
@@ -50,7 +50,11 @@ public class DriveTrain implements Subsystem {
     }
 
     public void Drive(){
-        mecDrive.driveCartesian(strafeSpeed, forwardSpeed, turnSpeed);
+//        mecDrive.driveCartesian(strafeSpeed, forwardSpeed, turnSpeed);
+        leftMotors.set(forwardSpeed);
+        leftMotors2.set(forwardSpeed);
+        rightMotors.set(forwardSpeed);
+        rightMotors2.set(forwardSpeed);
         SmartDashboard.putNumber("Drive", this.forwardSpeed);
         SmartDashboard.putNumber("Left MotorCAN", leftMotors.get());
 
